@@ -13,12 +13,10 @@ const { Option } = Select;
 
 const CryptoDetails = () => {
   const { coinId } = useParams();
-  const [timePeriod, setTimePeriod] = useState('7d');
+  const [timeperiod, setTimeperiod] = useState('7d');
   const { data, isFetching } = useGetCryptoDetailsQuery(coinId);
-  const { data: coinHistory} = useGetCryptoHistoryQuery({coinId, timePeriod});
+  const { data: coinHistory } = useGetCryptoHistoryQuery({ coinId, timeperiod });
   const cryptoDetails = data?.data?.coin;
-
-  console.log({coinId, timePeriod})
 
   if(isFetching) return "Loading...";
   
@@ -50,7 +48,7 @@ const CryptoDetails = () => {
           View value statistics, market cap and supply.
         </p>
       </Col>
-      <Select defaultValue='7d' className='select-timeperiod' placeholder="Select Time Period" onChange={(value) => setTimePeriod(value)}>
+      <Select defaultValue='7d' className='select-timeperiod' placeholder="Select Time Period" onChange={(value) => setTimeperiod(value)}>
         {time.map((date) => (
           <Option value={date} key={date}>{date}</Option>
         ))}
