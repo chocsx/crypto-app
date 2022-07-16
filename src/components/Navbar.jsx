@@ -18,7 +18,28 @@ const Navbar = () => {
 
     return () => window.removeEventListener('resize', handleResize);
   }, [])
-
+  const items = [
+    {
+      key: '/',
+      icon: <HomeOutlined/>,
+      label: 'Home'
+    },
+    {
+      key: 'cryptocurrencies',
+      icon: <FundOutlined/>,
+      label: 'Cryptocurrencies'
+    },
+    {
+      key: 'exchanges',
+      icon: <MoneyCollectOutlined/>,
+      label: 'Exchanges'
+    },
+    {
+      key: 'news',
+      icon: <BulbOutlined/>,
+      label: 'News'
+    },
+  ]
   useEffect(() => {
     if(screenSize < 760) {
       setActiveMenu(false)
@@ -38,20 +59,7 @@ const Navbar = () => {
         </Button>
       </div>
       {activeMenu && (
-        <Menu theme="dark">
-          <Menu.Item icon={<HomeOutlined/>}>
-            <Link to="/">Home</Link>
-          </Menu.Item>
-          <Menu.Item icon={<FundOutlined/>}>
-            <Link to="/cryptocurrencies">Cryptocurrencies</Link>
-          </Menu.Item>
-          <Menu.Item icon={<MoneyCollectOutlined/>}>
-            <Link to="/exchanges">Exchanges</Link>
-          </Menu.Item>
-          <Menu.Item icon={<BulbOutlined/>}>
-            <Link to="/news">News</Link>
-          </Menu.Item>
-        </Menu>
+        <Menu theme="dark" items={items}/>
       )}
 
     </div>
